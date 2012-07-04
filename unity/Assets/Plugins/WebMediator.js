@@ -84,7 +84,7 @@ private static function InstallPlatform() { }
 private static function UpdatePlatform() { }
 private static function ApplyMarginsPlatform() { }
 static function PollMessage() : WebMediatorMessage { return null; }
-static function EvaluateJS(js : String) { }
+static function EvalJS(js : String) { }
 
 #elif UNITY_IPHONE
 
@@ -95,7 +95,7 @@ static function EvaluateJS(js : String) { }
 @DllImportAttribute("__Internal") static private function _WebViewPluginSetVisibility(visibility : boolean) {}
 @DllImportAttribute("__Internal") static private function _WebViewPluginSetMargins(left : int, top : int, right : int, bottom : int) {}
 @DllImportAttribute("__Internal") static private function _WebViewPluginPollMessage() : String {}
-@DllImportAttribute("__Internal") static private function _WebViewPluginEvaluateJS(js : String) {}
+@DllImportAttribute("__Internal") static private function _WebViewPluginEvalJS(js : String) {}
 
 private static var viewVisibility : boolean;
 
@@ -123,8 +123,8 @@ static function PollMessage() : WebMediatorMessage {
     return message ? new WebMediatorMessage(message) : null;
 }
 
-static function EvaluateJS(js : String) {
-    _WebViewPluginEvaluateJS(js);
+static function EvalJS(js : String) {
+    _WebViewPluginEvalJS(js);
 }
 
 #elif UNITY_ANDROID
@@ -150,7 +150,7 @@ static function PollMessage() : WebMediatorMessage {
     return message ? new WebMediatorMessage(message) : null;
 }
 
-static function EvaluateJS(js : String) {
+static function EvalJS(js : String) {
     WebMediator.LoadUrl('javascript:' + js);
 }
 

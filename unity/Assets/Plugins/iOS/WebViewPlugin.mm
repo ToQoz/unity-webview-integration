@@ -52,7 +52,7 @@ extern "C" char *_WebViewPluginPollMessage() {
     }
 }
 
-extern "C" void _WebViewPluginEvaluateJS(const char* js) {
+extern "C" void _WebViewPluginEvalJS(const char* js) {
     NSString *jsStr = [NSString stringWithUTF8String:js];
     [webView stringByEvaluatingJavaScriptFromString:jsStr];
 }
